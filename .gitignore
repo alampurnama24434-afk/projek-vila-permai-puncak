@@ -1,0 +1,13 @@
+# Berkas sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Berkas sementara editor
+*.swp
+*.swo
+*~
+
+# Log dan berkas sementara
+*.log
+*.tmp

@@ -1,0 +1,691 @@
+/* ---------- Warna dan tipografi Konoha ---------- */
+:root {
+  color-scheme: light;
+  --warna-oranye: #ff7a00;
+  --warna-oranye-terang: #ff9838;
+  --warna-oranye-teks: #963b00;
+  --warna-biru: #1b2a49;
+  --warna-biru-gelap: #0f1b33;
+  --warna-krem: #fff3d6;
+  --warna-krem-gelap: #fbe9c0;
+  --warna-merah: #c1121f;
+  --warna-hijau: #2e7d32;
+  --warna-hitam: #111111;
+  --warna-putih: #ffffff;
+  --bayangan-komik: 5px 5px 0 var(--warna-hitam);
+  --bayangan-komik-besar: 8px 8px 0 var(--warna-hitam);
+  --font-halaman: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-halaman);
+  color: var(--warna-hitam);
+  background: var(--warna-krem);
+  font-size: 16px;
+}
+
+/* ---------- Dasar halaman dan kotak ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  line-height: 1.6;
+  background-color: var(--warna-krem);
+  background-image: radial-gradient(var(--warna-krem-gelap) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--warna-biru-gelap);
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+}
+
+.page-width {
+  width: min(1120px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* ---------- Kepala halaman dan navigasi ---------- */
+.site-header {
+  color: var(--warna-putih);
+  background: var(--warna-biru-gelap);
+  border-bottom: 7px solid var(--warna-oranye);
+}
+
+.navigation {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 243, 214, 0.25);
+}
+
+.navigation__brand {
+  color: var(--warna-oranye-terang);
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--warna-hitam);
+}
+
+.navigation__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.navigation__links a {
+  padding: 7px 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: var(--warna-putih);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.navigation__links a:hover {
+  color: var(--warna-hitam);
+  background: var(--warna-oranye-terang);
+  border-color: var(--warna-hitam);
+}
+
+.hero {
+  padding-block: 48px 56px;
+}
+
+.hero__eyebrow {
+  margin-bottom: 8px;
+  color: var(--warna-oranye-terang);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0 0 14px;
+  color: var(--warna-oranye-terang);
+  font-size: clamp(2.15rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-shadow: 4px 4px 0 var(--warna-hitam);
+}
+
+.hero > p:not(.hero__eyebrow) {
+  max-width: 650px;
+  margin-bottom: 26px;
+  color: var(--warna-krem);
+  font-size: 1.08rem;
+}
+
+/* ---------- Tombol bergaya jurus ---------- */
+.button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 3px solid var(--warna-hitam);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--warna-hitam);
+  font: inherit;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 7px 8px 0 var(--warna-hitam);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0 var(--warna-hitam);
+}
+
+.button--primary {
+  color: var(--warna-hitam);
+  background: var(--warna-oranye);
+}
+
+.button--primary:hover {
+  background: var(--warna-oranye-terang);
+}
+
+.button--secondary {
+  color: var(--warna-putih);
+  background: var(--warna-biru);
+}
+
+.button--secondary:hover {
+  background: var(--warna-biru-gelap);
+}
+
+.hero__button {
+  color: var(--warna-hitam);
+  background: var(--warna-oranye);
+}
+
+.hero__button:hover {
+  color: var(--warna-putih);
+  background: var(--warna-biru);
+}
+
+.button:focus-visible,
+.navigation a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 3px solid var(--warna-oranye-terang);
+  outline-offset: 3px;
+}
+
+/* ---------- Bagian dan judul konten ---------- */
+.section {
+  padding-block: 56px;
+}
+
+.section + .section {
+  border-top: 2px dashed rgba(27, 42, 73, 0.25);
+}
+
+.section__heading {
+  max-width: 700px;
+  margin-bottom: 26px;
+}
+
+.section__eyebrow {
+  margin-bottom: 7px;
+  color: var(--warna-oranye-teks);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section__heading h2 {
+  margin: 0 0 9px;
+  font-size: clamp(1.65rem, 3.4vw, 2.2rem);
+}
+
+.section__heading > p:last-child {
+  margin-bottom: 0;
+  color: #333333;
+}
+
+/* ---------- Pencarian dan input formulir ---------- */
+.search {
+  max-width: 560px;
+  margin-bottom: 24px;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--warna-biru-gelap);
+  font-weight: 800;
+}
+
+.form__control {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 3px solid var(--warna-hitam);
+  border-radius: 7px;
+  color: var(--warna-hitam);
+  background: var(--warna-putih);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form__control:focus {
+  outline: 3px solid var(--warna-oranye);
+  outline-offset: 2px;
+  border-color: var(--warna-oranye-teks);
+  background: #fffaf0;
+}
+
+.form__control[aria-invalid="true"] {
+  border-color: var(--warna-merah);
+}
+
+/* ---------- Kartu vila seperti gulungan ---------- */
+.villa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.villa-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border: 3px solid var(--warna-hitam);
+  border-radius: 12px;
+  background: var(--warna-krem);
+  box-shadow: var(--bayangan-komik);
+  animation: muncul-jutsu 0.42s ease-out both;
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.villa-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 10px;
+  background: var(--warna-oranye);
+  border-bottom: 2px solid var(--warna-hitam);
+  border-left: 2px solid var(--warna-hitam);
+  content: "";
+}
+
+.villa-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--bayangan-komik-besar);
+}
+
+.villa-card h3 {
+  display: table;
+  margin: 0 0 12px;
+  padding: 5px 12px;
+  border: 2px solid var(--warna-hitam);
+  border-radius: 6px;
+  color: var(--warna-hitam);
+  background: var(--warna-oranye);
+  font-size: 1.28rem;
+  font-weight: 900;
+}
+
+.villa-card__type,
+.villa-card__location {
+  margin: 0 0 6px;
+  color: #333333;
+}
+
+.villa-card__price {
+  margin: 14px 0;
+  color: var(--warna-oranye-teks);
+  font-size: 1.35rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 var(--warna-krem-gelap);
+}
+
+.villa-card__price span {
+  color: #333333;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.villa-card__subtitle {
+  margin: 14px 0 5px;
+  color: var(--warna-biru-gelap);
+  font-weight: 900;
+}
+
+.villa-card__facilities {
+  min-height: 52px;
+  margin: 0 0 16px;
+  padding-left: 22px;
+  color: #292929;
+}
+
+.villa-card__facilities li::marker {
+  color: var(--warna-oranye-teks);
+}
+
+.villa-card__status {
+  display: inline-block;
+  margin: 0;
+  padding: 4px 10px;
+  border: 2px solid var(--warna-hitam);
+  border-radius: 999px;
+  color: var(--warna-putih);
+  background: var(--warna-hijau);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.villa-card__status--unavailable {
+  background: var(--warna-merah);
+}
+
+.empty-state {
+  margin: 20px 0 0;
+  padding: 16px;
+  border: 2px dashed var(--warna-biru);
+  border-radius: 8px;
+  color: var(--warna-biru-gelap);
+  background: var(--warna-krem);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---------- Formulir dua kolom ---------- */
+.booking-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 18px;
+  padding: 24px;
+  border: 3px solid var(--warna-hitam);
+  border-radius: 12px;
+  background: var(--warna-krem);
+  box-shadow: var(--bayangan-komik);
+}
+
+.form__field {
+  min-width: 0;
+}
+
+.form__field--wide {
+  grid-column: 1 / -1;
+}
+
+.form__error {
+  display: block;
+  min-height: 1.4em;
+  margin-top: 4px;
+  color: var(--warna-merah);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.form__message {
+  margin: 0;
+  font-weight: 800;
+}
+
+.form__message--error {
+  color: var(--warna-merah);
+}
+
+.booking-form__note {
+  margin: 0;
+  color: #333333;
+  font-size: 0.92rem;
+}
+
+.booking-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Ringkasan biaya seperti gulungan jutsu ---------- */
+.summary {
+  padding: 24px;
+  border: 3px dashed var(--warna-biru);
+  border-radius: 12px;
+  background: var(--warna-krem-gelap);
+  box-shadow: 4px 4px 0 var(--warna-hitam);
+}
+
+.summary h3 {
+  margin: 0 0 12px;
+  color: var(--warna-biru-gelap);
+  font-size: 1.38rem;
+}
+
+.summary__status {
+  margin: 0 0 16px;
+  color: #333333;
+}
+
+.summary__status--success {
+  color: var(--warna-hijau);
+  font-weight: 800;
+}
+
+.summary__details {
+  margin: 0;
+}
+
+.summary__details > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding-block: 9px;
+  border-bottom: 1px dashed rgba(27, 42, 73, 0.4);
+}
+
+.summary__details dt {
+  color: #333333;
+}
+
+.summary__details dd {
+  margin: 0;
+  color: var(--warna-biru-gelap);
+  font-weight: 800;
+  text-align: right;
+}
+
+.summary__details .summary__total {
+  margin-top: 5px;
+  border-bottom: 0;
+  font-size: 1.08rem;
+}
+
+.summary__total dd {
+  color: var(--warna-oranye-teks);
+}
+
+.summary__note {
+  margin: 12px 0 0;
+  color: #333333;
+  font-size: 0.9rem;
+}
+
+/* ---------- Daftar pesanan ---------- */
+.orders-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order-item {
+  padding: 16px 18px;
+  border: 3px solid var(--warna-hitam);
+  border-left: 9px solid var(--warna-oranye);
+  border-radius: 8px;
+  background: var(--warna-krem);
+  box-shadow: 3px 3px 0 var(--warna-hitam);
+}
+
+.order-item strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--warna-biru-gelap);
+}
+
+.order-item p {
+  margin: 3px 0;
+  color: #333333;
+}
+
+/* ---------- Kaki halaman ---------- */
+.site-footer {
+  padding-block: 36px;
+  border-top: 7px solid var(--warna-oranye);
+  color: var(--warna-krem);
+  background: var(--warna-biru-gelap);
+}
+
+.site-footer__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 36px;
+}
+
+.site-footer h2 {
+  margin: 0 0 8px;
+  color: var(--warna-oranye-terang);
+  font-size: 1.4rem;
+  text-shadow: 2px 2px 0 var(--warna-hitam);
+}
+
+.site-footer p {
+  margin: 5px 0;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer a {
+  color: var(--warna-oranye-terang);
+  font-weight: 800;
+}
+
+.site-footer__copyright {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 243, 214, 0.28);
+}
+
+/* ---------- Animasi kartu ---------- */
+@keyframes muncul-jutsu {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Tata letak tablet ---------- */
+@media (max-width: 768px) {
+  .page-width {
+    width: min(100% - 36px, 640px);
+  }
+
+  .navigation {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding-block: 12px;
+  }
+
+  .hero {
+    padding-block: 38px 44px;
+  }
+
+  .section {
+    padding-block: 44px;
+  }
+
+  .villa-grid,
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Tata letak ponsel ---------- */
+@media (max-width: 480px) {
+  .page-width {
+    width: calc(100% - 28px);
+  }
+
+  .navigation__brand {
+    font-size: 1.45rem;
+  }
+
+  .navigation__links {
+    gap: 4px;
+  }
+
+  .navigation__links a {
+    padding: 6px 8px;
+    font-size: 0.92rem;
+  }
+
+  .hero {
+    padding-block: 32px 38px;
+  }
+
+  .hero > p:not(.hero__eyebrow) {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding-block: 36px;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .form__field--wide {
+    grid-column: auto;
+  }
+
+  .booking-form__actions {
+    flex-direction: column;
+  }
+
+  .booking-form__actions .button {
+    width: 100%;
+  }
+
+  .villa-card,
+  .summary {
+    padding: 19px;
+  }
+
+  .site-footer__content {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__copyright {
+    grid-column: auto;
+  }
+}

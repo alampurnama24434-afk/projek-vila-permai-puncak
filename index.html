@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lihat vila, cek ketersediaan, dan hitung biaya menginap di Vila Permai, Puncak.">
+  <title>Vila Permai | Pemesanan Vila di Puncak</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation page-width" aria-label="Navigasi utama">
+      <a class="navigation__brand" href="#beranda">Vila Permai</a>
+      <div class="navigation__links">
+        <a href="#koleksi-vila">Pilihan Vila</a>
+        <a href="#pemesanan">Pemesanan</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </nav>
+    <div class="hero page-width" id="beranda">
+      <p class="hero__eyebrow">Tempat istirahat keluarga di Puncak</p>
+      <h1>Selamat datang di Vila Permai</h1>
+      <p>Nikmati udara sejuk Puncak, Bogor. Pilih vila yang cocok dan lihat perkiraan biaya sebelum memesan.</p>
+      <a class="button button--primary hero__button" href="#koleksi-vila">Lihat pilihan vila</a>
+    </div>
+  </header>
+
+  <main class="page-width">
+    <section class="section villa-section" id="koleksi-vila" aria-labelledby="villa-heading">
+      <div class="section__heading">
+        <p class="section__eyebrow">Penginapan kami</p>
+        <h2 id="villa-heading">Pilih vila untuk liburan Anda</h2>
+        <p>Setiap vila memiliki suasana dan fasilitas berbeda untuk menemani waktu beristirahat.</p>
+      </div>
+      <div class="search">
+        <label class="form__label" for="pencarian-vila">Cari berdasarkan nama, tipe, atau fasilitas</label>
+        <input class="form__control" type="search" id="pencarian-vila" placeholder="Contoh: keluarga, taman, Wi-Fi" autocomplete="off">
+      </div>
+      <p class="form__message form__message--error" id="pesan-render" role="alert" hidden></p>
+      <div class="villa-grid" id="daftar-vila" aria-live="polite"></div>
+      <p class="empty-state" id="vila-tidak-ditemukan" hidden>Vila tidak ditemukan.</p>
+    </section>
+
+    <section class="section booking-section" id="pemesanan" aria-labelledby="booking-heading">
+      <div class="section__heading">
+        <p class="section__eyebrow">Rencanakan menginap</p>
+        <h2 id="booking-heading">Cek biaya dan pesan vila</h2>
+        <p>Isi rencana menginap Anda. Perkiraan biaya akan diperbarui otomatis.</p>
+      </div>
+      <div class="booking-layout">
+        <form class="booking-form" id="form-pemesanan" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="nama-tamu">Nama tamu</label>
+            <input class="form__control" type="text" id="nama-tamu" name="nama" autocomplete="name" maxlength="80" aria-describedby="error-nama">
+            <small class="form__error" id="error-nama" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="tanggal-masuk">Tanggal check-in</label>
+            <input class="form__control" type="date" id="tanggal-masuk" name="checkin" aria-describedby="error-checkin">
+            <small class="form__error" id="error-checkin" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="tanggal-keluar">Tanggal check-out</label>
+            <input class="form__control" type="date" id="tanggal-keluar" name="checkout" aria-describedby="error-checkout">
+            <small class="form__error" id="error-checkout" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="jumlah-tamu">Jumlah tamu</label>
+            <input class="form__control" type="number" id="jumlah-tamu" name="tamu" min="1" max="10" step="1" inputmode="numeric" aria-describedby="error-tamu">
+            <small class="form__error" id="error-tamu" aria-live="polite"></small>
+          </div>
+          <div class="form__field form__field--wide">
+            <label class="form__label" for="pilihan-vila">Pilihan vila</label>
+            <select class="form__control" id="pilihan-vila" name="vila" aria-describedby="error-vila">
+              <option value="">Pilih vila</option>
+            </select>
+            <small class="form__error" id="error-vila" aria-live="polite"></small>
+          </div>
+          <p class="booking-form__note form__field--wide">Harga dihitung dari jumlah malam × harga per malam. Tidak ada biaya tambahan per tamu.</p>
+          <div class="booking-form__actions form__field--wide">
+            <button class="button button--secondary" type="button" id="tombol-cek">Cek Ketersediaan</button>
+            <button class="button button--primary" type="submit">Pesan Sekarang</button>
+          </div>
+          <p class="form__message form__message--error form__field--wide" id="pesan-form" role="alert" aria-live="polite"></p>
+        </form>
+
+        <aside class="summary" aria-labelledby="summary-heading" aria-live="polite">
+          <p class="section__eyebrow">Ringkasan</p>
+          <h3 id="summary-heading">Perkiraan biaya</h3>
+          <p class="summary__status" id="status-pemesanan">Lengkapi tanggal, jumlah tamu, dan pilihan vila untuk melihat perkiraan biaya.</p>
+          <dl class="summary__details">
+            <div><dt>Vila</dt><dd id="ringkasan-vila">—</dd></div>
+            <div><dt>Lama menginap</dt><dd id="ringkasan-malam">—</dd></div>
+            <div><dt>Harga per malam</dt><dd id="ringkasan-harga">—</dd></div>
+            <div class="summary__total"><dt>Total perkiraan</dt><dd id="ringkasan-total">—</dd></div>
+          </dl>
+          <p class="summary__note">Perkiraan biaya ini belum menjadi konfirmasi pemesanan.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section orders-section" aria-labelledby="orders-heading">
+      <div class="section__heading">
+        <p class="section__eyebrow">Catatan pada perangkat ini</p>
+        <h2 id="orders-heading">Pesanan terkirim</h2>
+        <p>Daftar pesanan tersimpan di peramban yang sedang digunakan.</p>
+      </div>
+      <ul class="orders-list" id="daftar-pesanan" aria-live="polite"></ul>
+      <p class="empty-state" id="pesanan-kosong">Belum ada pesanan terkirim.</p>
+      <p class="form__message form__message--error" id="pesan-penyimpanan" role="status" hidden></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="kontak">
+    <div class="page-width site-footer__content">
+      <div>
+        <h2>Hubungi pemilik vila</h2>
+        <p>Mas Alam purnamasiap membantu rencana menginap Anda.</p>
+      </div>
+      <address>
+        <p>Vila Permai, kawasan Puncak, Kabupaten Bogor</p>
+        <p class="contact-card__detail">WhatsApp: <a href="https://wa.me/6285779515277">085779515277</a></p>
+      </address>
+      <p class="site-footer__copyright">© Vila Permai</p>
+    </div>
+  </footer>
+</body>
+</html>
